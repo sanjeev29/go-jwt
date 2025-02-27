@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/sanjeev29/go-jwt/database"
 	"github.com/sanjeev29/go-jwt/routes"
 )
 
@@ -13,6 +14,9 @@ func main() {
 	// Add custom routes
 	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
+
+	// Connect to database
+	_ = database.DBInstance()
 
 	// Router handler functions
 	router.GET("/api-1", func(ctx *gin.Context) {
